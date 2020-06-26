@@ -1,0 +1,3 @@
+1) Jenkins is purely an automation server
+2) It is used for CI and CD.
+3) So here we will cover about the jenkins and its integration with Git, Maven, AWS, Ansible and Docker.

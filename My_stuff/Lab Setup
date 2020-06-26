@@ -1,0 +1,4 @@
+1) We have used VMware Workstation in order to create our Virtual machine of Redhat 7
+2) on that VM we will creating our Docker environment and spinning up the containers
+3) Those containers will hold different applications and functionalities like Jenkins, Ansible and so on based on our 
+    project requirements
