@@ -2,3 +2,31 @@
 2) on that VM we will creating our Docker environment and spinning up the containers
 3) Those containers will hold different applications and functionalities like Jenkins, Ansible and so on based on our 
     project requirements
+4) Also we have made some network configuration as below
+    TYPE="Ethernet"
+    PROXY_METHOD="none"
+    BROWSER_ONLY="no"
+    BOOTPROTO="none"
+    # Server IP #
+    IPADDR=192.168.80.156
+    # subnet #
+    PREFIX=24
+    # set default gateway #
+    GATEWAY=192.168.80.2
+    # Setting DNS #
+    DNS1=192.168.80.2
+    DNS2=8.8.8.8
+    DNS3=8.8.4.4
+    DEFROUTE="yes"
+    IPV4_FAILURE_FATAL="no"
+    # disable IPv6 #
+    IPV6INIT=no
+    #IPV6_AUTOCONF="yes"
+    #IPV6_DEFROUTE="yes"
+    #IPV6_FAILURE_FATAL="no"
+    #IPV6_ADDR_GEN_MODE="stable-privacy"
+    NAME="ens33"
+    UUID="9f4c667f-c58a-4b70-ac03-5ccc2ac76099"
+    DEVICE="ens33"
+    ONBOOT="yes"
+6) So once we have set up our virtual machine, we are going to install Docker on it in further lectures.
