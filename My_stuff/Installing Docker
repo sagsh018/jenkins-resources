@@ -1,0 +1,48 @@
+1) Before installing Docker, make sure that your VM is reachable to internet
+2) So to install we are going to follow below URL
+    https://docs.docker.com/engine/install/centos/
+3) Note that ther are multiple ways of installing Docker, but we are going to install Docker using Repository method
+    means we are going to set up the Docker Repo in order to install Docker.
+4) for that we have to make sure that our virtual machine is connected to RedHat network from where it has to download 
+    the repo packages to install Docker.
+5) So lets first register our system on RedHat  
+    a) # subscription-manager register --username <username> --password <password> --auto-attach
+        This command is going to first register the system to RedHat and then add the subscription as well in one step
+        and this is how its going to look in output for above command   
+        =============================================================================
+        Registering to: subscription.rhsm.redhat.com:443/subscription
+        The system has been registered with ID: d2ff8389-4773-4648-8c83-5dd07edf9d84
+
+        Installed Product Current Status:
+        Product Name: Red Hat Enterprise Linux Server
+        Status:       Subscribed
+        =============================================================================
+6) once the system is registered, lets install Docker on it
+    # sudo yum install yum-utils -y
+    # sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+    # sudo subscription-manager repos --enable=rhel-7-server-extras-rpms ( This is to avoid errors related to 
+        container-selinux)
+    # sudo yum install docker-ce docker-ce-cli containerd.io
+    # sudo systemctl start docker
+    # sudo systemctl enable docker
+7) once this is done, we can check whether docker is installed or not by running below command  
+    # docker ps
+    Initial this command is going to give below error
+    =========================================================================================================
+    Got permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: 
+    Get http://%2Fvar%2Frun%2Fdocker.sock/v1.40/containers/json: dial unix /var/run/docker.sock: 
+    connect: permission denied
+    =========================================================================================================
+    To fix this error we can do as below:
+    sudo usermod -aG docker jenkins
+    So basically we are adding jenkins user ID in docker group as secondary. This way jenkins is going to get 
+    access to every docker related asset on server.
+    once jenkins is added to docker group, do logout and log back in again in order for SHELL variables to be updated
+8) Now you can check with below command whether docker us installed or Now
+    # docker ps
+        CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+        [jenkins@localhost ~]$
+    
+In the next video we are going to install docker-compose on VM.
+
+
