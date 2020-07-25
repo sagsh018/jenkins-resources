@@ -1,0 +1,15 @@
+1) So here we are going to install jenkins by making use of docker image which already have all the jenkins 
+    configuration available.
+2) so lets go to the below URL Docker imgae URL and follow the below steps in order to pull that image
+    https://hub.docker.com/r/jenkins/jenkins/
+    Use below command from above web page
+    # docker pull jenkins/jenkins
+    This docker pull command will pull the docker jenkins image from Docker Hub.
+    we can use below command for checking the available pulled image
+    # docker images
+3) To check the Docker root directory or to check the place where docker is storing all its files we can use below
+    command
+    # docker info | grep -i root
+        Docker Root Dir: /var/lib/docker
+    
+

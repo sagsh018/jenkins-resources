@@ -1,0 +1,8 @@
+1) So lets check first whether we have docker installed correctly or not, using
+    docker ps // This command should not throw any error
+2) Now we will proceed with docker compose installation from below mentioned link
+    https://docs.docker.com/compose/install/
+    on this URL page select option as Linux. Then we will follow below steps
+    a) sudo curl -L "https://github.com/docker/compose/releases/download/1.26.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+    b) sudo chmod +x /usr/local/bin/docker-compose
+    c) Then we can check the status docker compose using command " docker-compose --version"
