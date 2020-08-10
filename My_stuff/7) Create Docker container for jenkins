@@ -1,0 +1,41 @@
+1) So here in this lecture we are going to spin up the jenkins container using the docker-compose file we have created in 
+    previous lecture.
+2) Note that on our VM the ownership of our volume folder jenkins_home should be jenkins:jenkins otherwise container will
+    not be able to write data on this and we will have errors.
+    if you need to correct it run
+    # pwd ==> /home/jenkins/jenkins-data
+    # sudo chown jenkins:jenkins jenkins_home -R
+3) Once we have our docker-compose file ready and all the other conditions are met we are going to bring up the jenkins
+    container using below command
+    # docker-compose up -d
+4) Now once the docker contianer will be up we can see it running using below command
+    # docker ps 
+    CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                               NAMES
+    934f04fda039        jenkins/jenkins     "/sbin/tini -- /usr/…"   8 seconds ago       Up 3 seconds        0.0.0.0:8080->8080/tcp, 50000/tcp   jenkins
+    Note that docker is going to bring up this container by reading the docker-compose file.
+5) We can check the logs of perticular container running by using below command
+    # docker logs -f jenkins
+    and this is going to tell that our jenkins container is up and running
+    ================================================================================================================
+    2020-08-10 08:45:47.560+0000 [id=26]    INFO    jenkins.InitReactorRunner$1#onAttained: Completed initialization
+    2020-08-10 08:45:47.611+0000 [id=19]    INFO    hudson.WebAppMain$3#run: Jenkins is fully up and running
+    ================================================================================================================
+6) Now since we have our jenkins contianer ready we can go ahead and hit our VM ip on port 8080 and which inturn hit 
+    our container at the same port 8080 based on the ports mapping we did in docker-compose file.
+    jenkin.local:8080
+    This is going to give us the welcome screen of jenkins where we are goint to put the pasword for administrator
+    
+    We are going to get this either from the logs 
+    docker logs -f jenkins 
+    or as mentioned on the jenkins welcome screen ==> /var/jenkins_home/secrets/initialAdminPassword
+    which on our local VM is ==> /home/jenkins/jenkins-data/jenkins_home/secrets/initialAdminPassword
+    ==> ae5fb6cf56f84ceebb103d2c584dae86
+    We can put the same and login to jenkins
+7) Now we are going to get the customize jenkins screen where we are going to install suggested plugins as of now.
+    These plugins add extra funtionalality to our jenkins.
+8) once the plugins installation completes then we are going to get the first admin user creation page. We are going to
+    create following user
+    user name : jenkins
+    password : brDSLsd
+
+Now we have to start with Jenkins UI 

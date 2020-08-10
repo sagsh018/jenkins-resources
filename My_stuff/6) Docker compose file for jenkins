@@ -1,0 +1,36 @@
+1) Now since we have downloaded/pulled jenkins image in previous lecture. Now we are going to bring up our jenkins 
+    container using that image with the help of docker-compose file.
+2) Lets create a folder named as jenkins under our jenkins user home directory
+    # pwd
+        /home/jenkins
+    # mkdir jenkins-data
+    # cd jenkins-data
+    # pwd   
+        /home/jenkins/jenkins-data
+3) Now inside this newly created jenkins-data directory we are going to create sample docker-compose file
+    # cd jenkins-data
+    # vi docker-compose.yml
+    =========================
+        version: '3'
+        services:
+            jenkins:
+                container_name: jenkins
+                image: jenkins/jenkins
+                ports:
+                    - "8080:8080"
+                volumes:
+                    - "$PWD/jenkins_home:/var/jenkins_home"
+                networks:
+                    - net
+        networks:
+            net:
+    There are couple of things to note here:
+    a) We have mentioned services in this docker-compose file and for now we have only one service named as jenkins
+    b) We have mentioned container name inside that jenkins service
+    c) also we have mentioned image name as well. this image we have already downloaded from docker hub
+        and if this wouldn't be available, then docker is going to search this in docker-hub and download and install it.
+    d) then we have mentioned our Linux VM host port 8080 exposed for jenkins to run and that is mapped to continer port
+        on 80880 as well
+    e) Then we have also mentioned columes. that is jenkins_home on our VM is mapped with /var/jenkins_home in coontainer.
+    f) Then finally we have created network and added our jenkins service into that network.
+    
